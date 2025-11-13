@@ -1,3 +1,5 @@
+import allure
+
 from lib.base_case import BaseCase
 from lib.assertions import Assertions
 from lib.my_requests import MyRequests
@@ -30,6 +32,8 @@ class TestUserGet(BaseCase):
         expected_fields = ["username", "email", "firstName", "lastName"]
         Assertions.assert_json_has_keys(response2, expected_fields)
 
+    @allure.description(
+        "Verify that querying another user's data returns only username, keeping other personal information private")
     def test_get_another_user_data(self):
         data = {
             'email': 'vinkotov@example.com',

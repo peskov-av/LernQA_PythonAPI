@@ -75,10 +75,6 @@ class TestUserRegister(BaseCase):
         assert response.content.decode("utf-8") == "The value of 'username' field is too long", \
             f"Unexpected response content {response.content}"
 
-    # В этой задаче нужно написать тест, который авторизовывается одним пользователем, но получает данные другого
-    # (т.е. с другим ID). И убедиться, что в этом случае запрос также получает только username, так как мы не должны
-    # видеть остальные данные чужого пользователя.
-
     def test_get_other_user_data_after_login(self):
         data = self.prepare_registration_data()
 

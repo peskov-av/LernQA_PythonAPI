@@ -12,6 +12,7 @@ class TestUserAuth(BaseCase):
         ("no_token")
     ]
 
+    @allure.title("Prepare for the test")
     def setup_method(self):
         data = {
             'email': 'vinkotov@example.com',
@@ -24,7 +25,11 @@ class TestUserAuth(BaseCase):
         self.token = self.get_header(response1, "x-csrf-token")
         self.user_id_from_auth_method = self.get_json_value(response1, "user_id")
 
+    @allure.title("Test Authentication")
     @allure.description("This test successfully authorize user by email and password")
+    @allure.issue("AUTH-123")
+    @allure.testcase("TMS-456")
+    @allure.severity(allure.severity_level.CRITICAL)
     def test_auth_user(self):
 
         response2 = MyRequests.get(
